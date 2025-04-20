@@ -6,6 +6,7 @@ public class Counter extends Frame {
     private TextField tfCount;
     private Button btnCount;
     private int count = 0;
+    private Button btnReset; 
 
     public Counter () {
         setLayout(new FlowLayout());
@@ -20,7 +21,18 @@ public class Counter extends Frame {
         btnCount = new Button("Count");
         add(btnCount);
 
-        btnCount.addActionListener(new BtnCountListener()); 
+        btnCount.addActionListener(new BtnCountListener());
+        
+        btnReset = new Button("Reset");
+        add(btnReset);
+
+        btnReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                count = 0;
+                tfCount.setText(count + "");
+            }
+        });
 
         setTitle("AWT Counter");
         setSize(300, 200);
