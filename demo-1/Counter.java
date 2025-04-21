@@ -34,6 +34,8 @@ public class Counter extends Frame {
             }
         });
 
+        addWindowListener(new MyWindowListener());
+
         setTitle("AWT Counter");
         setSize(300, 200);
         setVisible(true);
@@ -50,5 +52,21 @@ public class Counter extends Frame {
             ++count;
             tfCount.setText(count + "");
         }
+    }
+
+    private class MyWindowListener implements WindowListener {
+        @Override
+      public void windowClosing(WindowEvent evt) {
+         System.exit(0);  // Terminate the program
+      }
+
+      // Not Used, BUT need to provide an empty body to compile.
+      @Override public void windowOpened(WindowEvent evt) { }
+      @Override public void windowClosed(WindowEvent evt) { }
+      // For Debugging
+      @Override public void windowIconified(WindowEvent evt) { System.out.println("Window Iconified"); }
+      @Override public void windowDeiconified(WindowEvent evt) { System.out.println("Window Deiconified"); }
+      @Override public void windowActivated(WindowEvent evt) { System.out.println("Window Activated"); }
+      @Override public void windowDeactivated(WindowEvent evt) { System.out.println("Window Deactivated"); }
     }
 }
